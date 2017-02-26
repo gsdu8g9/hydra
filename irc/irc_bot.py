@@ -1,11 +1,13 @@
 import sys
 import socket
 
-NICK = "gwuahson"
+NICK = "gwuah44son"
 IDENT = "thesongwuah"
 REALNAME = "gwuah"
 MASTER = "oxingwuah"
 channel = "#bots"
+
+global line
 
 HOST, PORT = "irc.freenode.net", 6667
 _buffer = ""
@@ -42,14 +44,15 @@ def main():
 		for line in message :
 			line = line.rstrip()
 			line = line.split()
-
-			if (line[0] == "PING") :
-				ping_pong_protocol(line)
-
-			if (line[1] == "PRIVMSG") :
-				username, message = output(line)
-				print("[%s] := %s" % (username, message))
-	else : pass
+			if len(line) <= 1 :
+				pass
+			else :
+				if (line[0] == "PING") :
+					ping_pong_protocol(line)
+	
+				if (line[1] == "PRIVMSG") :
+					username, message = output(line)
+					print("[%s] := %s" % (username, message))
 	
 main()
 
