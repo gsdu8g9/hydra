@@ -44,15 +44,23 @@ def main():
 		for line in message :
 			line = line.rstrip()
 			line = line.split()
+			
 			if len(line) <= 1 :
 				pass
-			else :
+			
+			if len(line) >= 2 :
+				if (line[1] == '366') :
+					print("Connected to a FREENODE-SERVER\nYou're Welcome\n")
+					print("You'll see all messages from the server in this window!")
+					print("Developed by Griffith Awuah\n")
+					print("[email] = griffith@dolphtech.com\n[twitter] = @asaregriffith\n")
+					
 				if (line[0] == "PING") :
 					ping_pong_protocol(line)
 	
 				if (line[1] == "PRIVMSG") :
 					username, message = output(line)
-					print("[%s] := %s" % (username, message))
+					print("\n[%s] := %s" % (username, message))
 	
 main()
 
